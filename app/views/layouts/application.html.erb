@@ -8,6 +8,27 @@
 </head>
 <body>
 
+<!-- Flash訊息確認 -->
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<!-- FB登入 -->
+<% if current_user %>
+  <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
+<% else %>
+  <%= link_to "登入 Facebook", user_omniauth_authorize_path(:facebook) %>
+<% end %>
+
+<!-- 使用者註冊及登入 -->
+ <% if current_user %>
+    您好，<%= current_user.email %>
+    <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
+    <%= link_to('修改密碼', edit_registration_path(:user)) %>
+  <% else %>
+    <%= link_to('註冊', new_registration_path(:user)) %>
+    <%= link_to('登入', new_session_path(:user)) %>
+  <% end %>
+
 <%= yield %>
 
 </body>

@@ -1,10 +1,34 @@
 source 'https://rubygems.org'
 
+gem 'hirb-unicode', :group => :development
 
+gem 'capistrano-rails', :group => :development
+
+gem 'capistrano-passenger', :group => :development
+
+gem "mysql2"
+
+gem "paperclip"
+
+gem 'ransack'
+
+gem "select2-rails"
+
+gem 'omniauth-facebook'
+
+gem 'devise'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem "kaminari"
+
+gem 'pg'
+
+gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -33,8 +57,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'faker'
+
 end
 
 group :development do
