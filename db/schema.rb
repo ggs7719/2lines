@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711063632) do
+ActiveRecord::Schema.define(version: 20160711072009) do
+
+  create_table "prenatals", force: :cascade do |t|
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "title"
+    t.string   "content"
+    t.datetime "date"
+    t.boolean  "status",     default: false
+    t.integer  "mother_id"
+    t.integer  "father_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
