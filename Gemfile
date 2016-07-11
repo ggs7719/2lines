@@ -24,6 +24,8 @@ gem "kaminari"
 
 gem 'pg'
 
+gem 'faker'
+
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
