@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :quests
   resources :orders
   resources :prenatals
   root :to => "welcome#index"
