@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711080429) do
+ActiveRecord::Schema.define(version: 20160712025558) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at",                 null: false
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160711080429) do
     t.string   "nick_name"
     t.string   "sexuality"
     t.date     "due_date"
+    t.string   "ios_token"
   end
 
   add_index "users", ["due_date"], name: "index_users_on_due_date"
