@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :parents
   resources :quests
   resources :orders
   resources :prenatals

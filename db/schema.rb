@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712025558) do
+ActiveRecord::Schema.define(version: 20160712041427) do
 
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at",                 null: false
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20160712025558) do
     t.boolean  "status",     default: false
     t.integer  "mother_id"
     t.integer  "father_id"
+  end
+
+  create_table "parents", force: :cascade do |t|
+    t.integer  "mother_id"
+    t.integer  "father_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "prenatals", force: :cascade do |t|
