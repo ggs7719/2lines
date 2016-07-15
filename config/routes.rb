@@ -7,6 +7,28 @@ Rails.application.routes.draw do
   root :to => "welcome#index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
+     resources :parents
+
+     resources :quests, only: [:index, :create]
+     post "/quests/:id/status" => "quests#send_read", :as => 'quests_send_read'
+     post "/quests/:id/done" => "quests#send_done", :as => 'quests_send_done'
+
+     namespace :orders do
+       resources :moods, only: [:index, :create]
+       post "/moods/:id/status" => "orders#mood_read", :as => 'moods_send_read'
+
+       resources :psycos, only: [:index, :create]
+       post "/psycos/:id/status" => "orders#psyco_read", :as => 'psycos_send_read'
+     end
+
+
+
+     resources :prenatals, only: [:index, :create, :update]
+     post "/prenatals/:id/status" => "prenatals#send_read", :as => 'prenatals_send_read'
+
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
