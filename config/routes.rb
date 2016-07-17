@@ -19,8 +19,8 @@ Rails.application.routes.draw do
     resources :moods, only: [:index, :create]
     post "/moods/:id/status" => "orders#mood_read", :as => 'moods_send_read'
 
-    resources :psycos, only: [:index, :create]
-    post "/psycos/:id/status" => "orders#psyco_read", :as => 'psycos_send_read'
+    resources :psychos, only: [:index, :create]
+    post "/psychos/:id/status" => "orders#psycho_read", :as => 'psychos_send_read'
 
     resources :prenatals, only: [:index, :create, :update]
     post "/prenatals/:id/status" => "prenatals#send_read", :as => 'prenatals_send_read'
