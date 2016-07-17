@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712041427) do
+ActiveRecord::Schema.define(version: 20160717070250) do
 
-  create_table "orders", force: :cascade do |t|
+  create_table "moods", force: :cascade do |t|
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "title"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20160712041427) do
   end
 
   create_table "prenatals", force: :cascade do |t|
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "title"
+    t.string   "content"
+    t.datetime "date"
+    t.boolean  "status",     default: false
+    t.integer  "mother_id"
+    t.integer  "father_id"
+  end
+
+  create_table "psychos", force: :cascade do |t|
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.string   "title"

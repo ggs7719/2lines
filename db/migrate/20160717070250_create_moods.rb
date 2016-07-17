@@ -1,6 +1,6 @@
-class CreateOrders < ActiveRecord::Migration
+class CreateMoods < ActiveRecord::Migration
   def change
-    create_table :orders do |t|
+    create_table :moods do |t|
 
       t.timestamps null: false
       t.string   :title

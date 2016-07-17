@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :moods
+  resources :psychos
   resources :parents
   resources :quests
-  resources :orders
   resources :prenatals
   root :to => "welcome#index"
 

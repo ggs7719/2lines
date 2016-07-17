@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Psychos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @psychos.each do |psycho| %>
+      <tr>
+        <td><%= link_to 'Show', psycho %></td>
+        <td><%= link_to 'Edit', edit_psycho_path(psycho) %></td>
+        <td><%= link_to 'Destroy', psycho, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Psycho', new_psycho_path %>
