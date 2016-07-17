@@ -1,12 +1,16 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :mother_quests, :class_name => "Quest", :foreign_key => "mother_id"  
-  has_many :father_quests, :class_name => "Quest", :foreign_key => "father_id"  
-  has_many :mother_prenatals, :class_name => "Prenatal", :foreign_key => "mother_id"  
+  has_many :mother_quests, :class_name => "Quest", :foreign_key => "mother_id"
+  has_many :father_quests, :class_name => "Quest", :foreign_key => "father_id"
+  has_many :mother_prenatals, :class_name => "Prenatal", :foreign_key => "mother_id"
   has_many :father_prenatals, :class_name => "Prenatal", :foreign_key => "father_id"
-  has_many :mother_orders, :class_name => "Order", :foreign_key => "mother_id"  
-  has_many :father_orders, :class_name => "Order", :foreign_key => "father_id"    
+  has_many :mother_moods, :class_name => "Mood", :foreign_key => "mother_id"
+  has_many :father_moods, :class_name => "Mood", :foreign_key => "father_id"
+  has_many :mother_psychos, :class_name => "Psycho", :foreign_key => "mother_id"
+  has_many :father_psychos, :class_name => "Psycho", :foreign_key => "father_id"
+  has_one :mother_parent, :class_name => "Parent", :foreign_key => "mother_id"
+  has_one :father_parent, :class_name => "Parent", :foreign_key => "father_id"
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
