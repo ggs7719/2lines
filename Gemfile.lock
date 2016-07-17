@@ -258,7 +258,7 @@ DEPENDENCIES
   mysql2
   omniauth-facebook
   paperclip
-  pg
+  pg (~> 0.18.4)
   rails (= 4.2.6)
   rails_12factor
   ransack

@@ -22,7 +22,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem "kaminari"
 
-gem 'pg'
+gem 'pg', '~> 0.18.4'
 
 gem 'faker'
 
