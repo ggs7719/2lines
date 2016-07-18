@@ -35,4 +35,11 @@ class ApiV1::AuthController < ApplicationController
     end
   end
 
+  def logout
+    current_user.generate_authentication_token
+    current_user.save!
+
+    render :json => { :message => "Ok"}
+  end
+
 end
