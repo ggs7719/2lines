@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  before_create :generate_authentication_token
+  before_create :generate_ios_token
 
   def self.from_omniauth(auth)
      # Case 1: Find existing user by facebook uid
