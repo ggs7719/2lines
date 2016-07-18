@@ -20,8 +20,8 @@
 <% end %>
 
 <!-- 使用者註冊及登入 -->
- <% if current_user %>
-    您好，<%= current_user.email %>
+<% if current_user %>
+  您好，<%= current_user.email %>
     <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
     <%= link_to('修改密碼', edit_registration_path(:user)) %>
   <% else %>
@@ -29,6 +29,10 @@
     <%= link_to('登入', new_session_path(:user)) %>
   <% end %>
 
+<!-- 串聯爸爸 -->
+<% if current_user %>
+  <%= link_to('串聯爸爸', welcome_index_path) %>
+<% end %>
 <%= yield %>
 
 </body>
