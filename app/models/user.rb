@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_one :mother_parent, :class_name => "Parent", :foreign_key => "mother_id"
   has_one :father_parent, :class_name => "Parent", :foreign_key => "father_id"
 
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
