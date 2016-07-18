@@ -6,7 +6,10 @@ class User < ActiveRecord::Base
   has_many :mother_prenatals, :class_name => "Prenatal", :foreign_key => "mother_id"  
   has_many :father_prenatals, :class_name => "Prenatal", :foreign_key => "father_id"
   has_many :mother_orders, :class_name => "Order", :foreign_key => "mother_id"  
-  has_many :father_orders, :class_name => "Order", :foreign_key => "father_id"    
+  has_many :father_orders, :class_name => "Order", :foreign_key => "father_id"
+  has_one  :father_parent, :class_name => "parent", :foreign_key => "father_id"
+  has_one  :mother_parent, :class_name => "parent", :foreign_key => "mother_id"
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
