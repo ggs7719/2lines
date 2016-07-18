@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717073128) do
+ActiveRecord::Schema.define(version: 20160718103137) do
 
   create_table "moods", force: :cascade do |t|
     t.datetime "created_at",                 null: false
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20160717073128) do
   add_index "users", ["due_date"], name: "index_users_on_due_date"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["fb_uid"], name: "index_users_on_fb_uid"
+  add_index "users", ["ios_token"], name: "index_users_on_ios_token", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

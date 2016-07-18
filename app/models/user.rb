@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  before_create :generate_authentication_token
+
   def self.from_omniauth(auth)
      # Case 1: Find existing user by facebook uid
      user = User.find_by_fb_uid( auth.uid )
@@ -47,4 +49,9 @@ class User < ActiveRecord::Base
      user.save!
      return user
    end
+
+   def generate_ios_token
+     self.ios_token = Devise.friendly_token
+  end
+
 end
