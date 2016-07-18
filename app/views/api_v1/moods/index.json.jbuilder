@@ -1,13 +1,13 @@
 json.TotalCount do
-  json.total Quest.count
+  json.total Mood.count
 end
 
-json.data @quests do |quest|
+json.data @moods do |mood|
 
-  json.created_at quest.created_at
-  json.title quest.title
-  json.content quest.content
-  json.message quest.message
-  json.date quest.date
-  json.read_status quest.status
+  json.created_at mood.created_at
+  json.title mood.title
+  json.content mood.content
+  json.message mood.message
+  json.date mood.date
+  json.read_status mood.status
 end

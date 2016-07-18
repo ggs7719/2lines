@@ -1,13 +1,13 @@
 json.TotalCount do
-  json.total Quest.count
+  json.total Psycho.count
 end
 
-json.data @quests do |quest|
+json.data @psychos do |psycho|
 
-  json.created_at quest.created_at
-  json.title quest.title
-  json.content quest.content
-  json.message quest.message
-  json.date quest.date
-  json.read_status quest.status
+  json.created_at psycho.created_at
+  json.title psycho.title
+  json.content psycho.content
+  json.message psycho.message
+  json.date psycho.date
+  json.read_status psycho.status
 end

@@ -1,14 +1,13 @@
 json.TotalCount do
-  json.total Quest.count
+  json.total Prenatal.count
 end
 
-json.data @quests do |quest|
+json.data @prenatals do |prenatal|
 
-  json.created_at quest.created_at
-  json.title quest.title
-  json.content quest.content
-  json.message quest.message
-  json.date quest.date
-  json.read_status quest.status
-  json.done quest.done
+  json.created_at prenatal.created_at
+  json.title prenatal.title
+  json.content prenatal.content
+  json.message prenatal.message
+  json.date prenatal.date
+  json.read_status prenatal.status
 end
