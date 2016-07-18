@@ -1,5 +1,5 @@
 class ApiV1::PsychosController < ApplicationController
   def index
-    @quests = Quest.all
+    @Psychos = Psycho.all
   end
 end

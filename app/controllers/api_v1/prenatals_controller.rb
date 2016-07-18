@@ -1,5 +1,5 @@
 class ApiV1::PrenatalsController < ApplicationController
   def index
-    @quests = Quest.all
+    @prenatals = Prenatal.all
   end
 end
