@@ -24,7 +24,7 @@ class ParentsController < ApplicationController
   # POST /parents
   # POST /parents.json
   def create
-    @parent = Parent.new(parent_params)
+    @parent = User.parent.create(:mother_id => params[:id])
 
     respond_to do |format|
       if @parent.save

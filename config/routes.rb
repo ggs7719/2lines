@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   resources :parents
   resources :quests
   resources :prenatals
+  resources :welcome do
+    collection do
+      post :connect_father
+    end
+  end
+
   root :to => "welcome#index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
