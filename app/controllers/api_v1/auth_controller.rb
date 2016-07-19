@@ -1,6 +1,6 @@
 class ApiV1::AuthController < ApplicationController
 
-  before_action :authenticate_user!, :only => [:logout]
+  # before_action :authenticate_user!, :only => [:logout]
 
   def login
     success = false
