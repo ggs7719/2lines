@@ -26,17 +26,6 @@ ActiveRecord::Schema.define(version: 20160718103137) do
     t.string   "message"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "title"
-    t.string   "content"
-    t.datetime "date"
-    t.boolean  "status",     default: false
-    t.integer  "mother_id"
-    t.integer  "father_id"
-  end
-
   create_table "parents", force: :cascade do |t|
     t.integer  "mother_id"
     t.integer  "father_id"
