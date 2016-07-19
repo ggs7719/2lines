@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
 
    def generate_ios_token
      self.ios_token = Devise.friendly_token
-  end
+   end
+
+   def connect_father
+     
+   end
 
 end

@@ -1,0 +1,7 @@
+<% if current_user %>
+  <%= form_tag ('/welcome/connect_father'), multipart: true do %>
+  爸爸的email <%= text_field_tag :email %>
+  想說的話 <%= text_field_tag :comment %>
+  <%= submit_tag '送出' %>
+  <% end %>
+<% end %>
