@@ -3,13 +3,18 @@ class WelcomeController < ApplicationController
   end
 
 
-  # 串聯爸爸頁面
+  # 串連爸爸頁面
   def show
   end
 
+  #發送串連爸爸的email
   def conect_father
-  	
-    redirect_to index_url
+    comment = Comment.new(comment_params)
+    if comment.save
+      UserMailer.notify_comment(current_user, comment).deliver_now!
+      redirect_to index_path
+    else
+      redirect_to index_path
+    end
   end
-
 end
