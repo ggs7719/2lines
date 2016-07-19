@@ -4,6 +4,7 @@ end
 
 json.data @moods do |mood|
 
+  json.id mood.id
   json.created_at mood.created_at
   json.title mood.title
   json.content mood.content

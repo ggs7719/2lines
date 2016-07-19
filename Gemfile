@@ -22,6 +22,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem "kaminari"
 
+gem 'rest-client', '~> 1.8'
+
 # gem 'pg', '~> 0.18.4'
 
 gem 'rails_12factor', group: :production

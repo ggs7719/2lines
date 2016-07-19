@@ -4,6 +4,7 @@ end
 
 json.data @psychos do |psycho|
 
+  json.id psycho.id
   json.created_at psycho.created_at
   json.title psycho.title
   json.content psycho.content

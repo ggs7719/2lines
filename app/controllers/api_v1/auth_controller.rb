@@ -1,4 +1,4 @@
-class ApiV1::AuthController < ApplicationController
+class ApiV1::AuthController < ApiController
 
   # before_action :authenticate_user!, :only => [:logout]
 
@@ -8,8 +8,10 @@ class ApiV1::AuthController < ApplicationController
     if params[:email] && params[:password]
       user = User.find_by_email( params[:email] )
       success = user && user.valid_password?( params[:password] )
-    elsif params[:access_token]
-      fb_data = User.get_fb_data( params[:access_token] )
+    elsif params[:fb_token]
+      # fb_data = User.get_fb_data( params[:fb_token] )
+      j = RestClient.get "https://graph.facebook.com/v2.5/me", :params => { :access_token => params[:fb_token], :fields => "id,name,email,picture" }
+      fb_data = JSON.parse(j)
       if fb_data
         auth_hash = OmniAuth::AuthHash.new({
           uid: fb_data["id"],
@@ -17,7 +19,7 @@ class ApiV1::AuthController < ApplicationController
             email: fb_data["email"]
           },
           credentials: {
-            token: params[:access_token]
+            token: params[:fb_token]
           }
         })
         user = User.from_omniauth(auth_hash)
@@ -36,10 +38,13 @@ class ApiV1::AuthController < ApplicationController
   end
 
   def logout
-    current_user.generate_authentication_token
-    current_user.save!
-
-    render :json => { :message => "Ok"}
+    user = User.find_by_ios_token(params[:ios_token])
+    user.generate_ios_token
+    if user.save!
+      render :json => { :message => "Ok"}
+    else
+      render :json => { :message => "fail"}
+    end
   end
 
 end

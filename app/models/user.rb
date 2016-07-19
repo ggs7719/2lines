@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
    end
 
    def connect_father
-     
+
    end
 
 end

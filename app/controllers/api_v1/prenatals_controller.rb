@@ -1,4 +1,4 @@
-class ApiV1::PrenatalsController < ApplicationController
+class ApiV1::PrenatalsController < ApiController
 
   def index
     @prenatals = Prenatal.all
@@ -14,10 +14,10 @@ class ApiV1::PrenatalsController < ApplicationController
     end
   end
 
-  def create
-    @prenatal = Prenatal.update( prenatal_params )
+  def update
+    @prenatal = Prenatal.find( params[:id])
 
-    if @prenatal.save
+    if @prenatal.update( prenatal_params )
       render :json => { :message => "Successfully updated"}
     else
       render :json => { :message => "Validate failed" }, :status => 400
@@ -25,6 +25,6 @@ class ApiV1::PrenatalsController < ApplicationController
   end
 
   def prenatal_params
-    params.require(:prenatal).permit(:title, :content, :message, :status, :count)
+    params.permit(:title, :content, :message)
   end
 end

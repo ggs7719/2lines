@@ -4,6 +4,7 @@ end
 
 json.data @prenatals do |prenatal|
 
+  json.id prenatal.id
   json.created_at prenatal.created_at
   json.title prenatal.title
   json.content prenatal.content

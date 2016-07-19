@@ -4,6 +4,7 @@ end
 
 json.data @quests do |quest|
 
+  json.id quest.id
   json.created_at quest.created_at
   json.title quest.title
   json.content quest.content
