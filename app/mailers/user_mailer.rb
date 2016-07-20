@@ -5,9 +5,10 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.notify_comment.subject
   #
-  def notify_comment(email, user ,comment)
+
+  def notify_comment(email, user, comment)
         @comment = comment
         @email = email
-        mail(:to => @email, :cc => user.email ,:subject => "期待您加入2 Lines！")
+        mail(:to => @email, :subject => "期待您加入2 Lines！")
   end
 end
