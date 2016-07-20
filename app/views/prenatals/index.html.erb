@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Prenatals</h1>
+<h1>產檢記錄</h1>
 
 <table>
   <thead>
@@ -12,9 +12,9 @@
   <tbody>
     <% @prenatals.each do |prenatal| %>
       <tr>
-        <td><%= link_to 'Show', prenatal %></td>
-        <td><%= link_to 'Edit', edit_prenatal_path(prenatal) %></td>
-        <td><%= link_to 'Destroy', prenatal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳情', prenatal %></td>
+        <td><%= link_to '編輯', edit_prenatal_path(prenatal) %></td>
+        <td><%= link_to '刪除', prenatal_path(prenatal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Prenatal', new_prenatal_path %>
+<%= link_to '新增產檢記錄', new_prenatal_path %>

@@ -1,5 +1,41 @@
-<h1>New Prenatal</h1>
+<%= form_for @prenatal, :url => prenatals_path, :class => "form" do |f| %>
+
+<div class="form-group">
+  <%= f.label :date, "日期" %>
+  <%= f.text_field :date, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :title, "主題" %>
+  <%= f.text_field :title, :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :content, "內容" %>
+  <%= f.text_area :content, :class => "form-control" %>
+</div>
+
+
+<%= f.submit "發表", :class => "btn btn-primary" %>
+<% end %>
+
+<%= link_to '回上頁', prenatals_path %>
+
+
+
+
+
+
+
+
+
+<!-- <h1>新增產檢記錄</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', prenatals_path %>
+<div class="form-group">
+  日期 <%= text_field_tag :date %>
+  內容 <%= text_field_tag :content %>
+</div>
+
+<%= link_to '回上頁', prenatals_path %> -->
