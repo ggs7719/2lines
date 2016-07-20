@@ -19,6 +19,18 @@ class User < ActiveRecord::Base
 
   before_create :generate_ios_token
 
+  after_create :generate_father_id
+
+  # 註冊後檢查是否有mother_id
+  def generate_father_id
+    if params[:mother_id]
+      parent = Parent.find_by(:mother_id => params[:mother_id])
+      parent.update(:father_id => self.id)
+    else
+      paraent = Parent.create(:mother_id => self.id)
+    end
+  end
+
   def self.from_omniauth(auth)
      # Case 1: Find existing user by facebook uid
      user = User.find_by_fb_uid( auth.uid )
