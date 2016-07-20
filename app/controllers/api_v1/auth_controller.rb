@@ -2,6 +2,24 @@ class ApiV1::AuthController < ApiController
 
   # before_action :authenticate_user!, :only => [:logout]
 
+  def signup
+    success = false
+    #POST /api/v1/singup
+
+    if params[:email] && params[:password]
+
+      user = User.new(:email => params[:email], :password => params[:password])
+      if user.save
+        render :json => { :message => "Ok",
+                        :auth_token => user.ios_token,
+                        :user_id => user.id}
+      else
+        render :json => { :message => "Email or Password is wrong" }, :status => 401
+      end
+
+    end
+  end
+
   def login
     success = false
 

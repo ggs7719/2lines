@@ -31,9 +31,10 @@ Rails.application.routes.draw do
     resources :prenatals, only: [:index, :create, :update]
     post "/prenatals/:id/status" => "prenatals#send_read", :as => 'prenatals_send_read'
 
-    #log in/log out
+    #log in/log out/ sign up
     post "/login" => "auth#login"
     post "/logout" => "auth#logout"
+    post "/signup" => "auth#signup"
 
   end
   # The priority is based upon order of creation: first created -> highest priority.
