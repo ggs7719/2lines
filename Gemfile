@@ -26,7 +26,6 @@ gem 'rest-client', '~> 1.8'
 
 # gem 'pg', '~> 0.18.4'
 
-gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record

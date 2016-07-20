@@ -23,7 +23,7 @@ class ApiV1::PsychosController < ApiController
     end
   end
 
-  def mood_params
+  def psycho_params
     params.permit(:title, :content, :message)
   end
 end

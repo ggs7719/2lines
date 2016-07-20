@@ -4,7 +4,7 @@ lock '3.5.0'
 `ssh-add`
 set :application, '2lines'
 
-set :repo_url, 'https://github.com/WeiChengChiu/2lines.git'
+set :repo_url, 'git@github.com:ggs7719/2lines.git'
 set :deploy_to, '/home/deploy/2lines'
 set :keep_releases, 5
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')  # 如果有 facebook.yml 或 email.yml 想要連結的話，也要加進來
