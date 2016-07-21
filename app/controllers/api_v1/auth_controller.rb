@@ -66,4 +66,15 @@ class ApiV1::AuthController < ApiController
     end
   end
 
+  def connect_father
+
+    email = params[:email]
+    comment = params[:comment]
+    if UserMailer.notify_comment(email, current_user, comment).deliver_now!
+      render :json => { :message => "Successfully delivered"}
+    else
+      render :json => { :message => "fail" }
+    end
+  end
+
 end

@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     post "/login" => "auth#login"
     post "/logout" => "auth#logout"
     post "/signup" => "auth#signup"
+    #connect_father
+    post "/connect_father" => "auth#connect_father"
 
   end
   # The priority is based upon order of creation: first created -> highest priority.
