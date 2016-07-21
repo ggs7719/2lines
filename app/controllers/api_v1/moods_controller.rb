@@ -1,4 +1,7 @@
 class ApiV1::MoodsController < ApiController
+
+  before_action :authenticate_user!
+
   def index
     @moods = Mood.all
   end

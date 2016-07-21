@@ -1,6 +1,6 @@
 class ApiV1::AuthController < ApiController
 
-  # before_action :authenticate_user!, :only => [:logout]
+  before_action :authenticate_user!, :only => [:logout]
 
   def signup
     success = false
@@ -11,7 +11,7 @@ class ApiV1::AuthController < ApiController
       user = User.new(:email => params[:email], :password => params[:password])
       if user.save
         render :json => { :message => "Ok",
-                        :auth_token => user.ios_token,
+                        :ios_token => user.ios_token,
                         :user_id => user.id}
       else
         render :json => { :message => "Email or Password is wrong" }, :status => 401
@@ -44,11 +44,12 @@ class ApiV1::AuthController < ApiController
       end
 
       success = fb_data && user.persisted?
+
     end
 
     if success
       render :json => { :message => "Ok",
-                        :auth_token => user.ios_token,
+                        :ios_token => user.ios_token,
                         :user_id => user.id}
     else
       render :json => { :message => "Email or Password is wrong" }, :status => 401

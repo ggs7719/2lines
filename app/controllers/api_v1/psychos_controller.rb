@@ -1,4 +1,7 @@
 class ApiV1::PsychosController < ApiController
+
+  before_action :authenticate_user!
+
   def index
     @psychos = Psycho.all
   end

@@ -1,5 +1,7 @@
 class ApiV1::PrenatalsController < ApiController
 
+  before_action :authenticate_user!
+
   def index
     @prenatals = Prenatal.all
   end
