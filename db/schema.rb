@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718103137) do
+ActiveRecord::Schema.define(version: 20160721064648) do
 
   create_table "moods", force: :cascade do |t|
     t.datetime "created_at",                 null: false
@@ -31,7 +31,12 @@ ActiveRecord::Schema.define(version: 20160718103137) do
     t.integer  "father_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "token"
+    t.string   "status"
   end
+
+  add_index "parents", ["token"], name: "index_parents_on_token", unique: true
 
   create_table "prenatals", force: :cascade do |t|
     t.datetime "created_at",                 null: false
