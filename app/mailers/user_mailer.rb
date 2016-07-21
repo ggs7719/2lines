@@ -6,9 +6,12 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.notify_comment.subject
   #
 
-  def notify_comment(email, user, comment)
-        @comment = comment
-        @email = email
-        mail(:to => @email, :subject => "期待您加入2 Lines！")
+  def notify_comment(email, comment, token)
+    @comment = comment
+    @email = email
+    @token = Devise.friendly_token
+    @url = "http://139.162.7.161/users/sign_up?token=" + @token
+
+    mail(:to => @email, :subject => "期待您加入2 Lines！")
   end
 end
