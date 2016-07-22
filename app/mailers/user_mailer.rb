@@ -8,17 +8,22 @@ class UserMailer < ApplicationMailer
 
 
   def notify_father(parent)
-  
-  end
-
-  def notify_comment(email, comment, token)
-    @comment = comment
-    @email = email
-    @token = Parent.token
-    @url = "http://139.162.7.161/users/sign_up?token=" + @token
+    @comment = parent.comment
+    @email = parent.email
+    @url = "http://139.162.7.161/users/sign_up"
 
     # new_accept_users_url( :token => @token )
 
     mail(:to => @email, :subject => "期待您加入2 Lines！")
   end
+
+  # def notify_comment(email, comment, parent)
+  #   @comment = comment
+  #   @email = email
+  #   @url = "http://139.162.7.161/users/sign_up"
+
+  #   # new_accept_users_url( :token => @token )
+
+  #   mail(:to => @email, :subject => "期待您加入2 Lines！")
+  # end
 end

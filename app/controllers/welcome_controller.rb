@@ -10,12 +10,13 @@ class WelcomeController < ApplicationController
   # 發送串連爸爸的email
   def connect_father
 
-    parent = current_user.mother_parent.new( :email => params[:email], :comment => params[:comment])
+    parent = current_user.build_mother_parent( :email => params[:email], :comment => params[:comment])
+    # Parent.new( :mother_id => current_user.id, :email => params[:email], :comment => params[:comment]  )
     parent.save
 
-    UserMailer.notify_father(parent)
+    UserMailer.notify_father(parent).deliver_now!
 
-#    UserMailer.notify_comment(email, comment, token).deliver_now!
+   # UserMailer.notify_comment(email, comment, parent).deliver_now!
     
   end
 

@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :father_moods, :class_name => "Mood", :foreign_key => "father_id"
   has_many :mother_psychos, :class_name => "Psycho", :foreign_key => "mother_id"
   has_many :father_psychos, :class_name => "Psycho", :foreign_key => "father_id"
-  
+
   has_one :mother_parent, :class_name => "Parent", :foreign_key => "mother_id"
   has_one :father_parent, :class_name => "Parent", :foreign_key => "father_id"
 
@@ -21,17 +21,17 @@ class User < ActiveRecord::Base
   before_create :generate_ios_token
 
 
-  before_create :generate_father_id
+  # before_create :generate_father_id
 
   # 註冊後檢查是否有mother_id
-  def generate_father_id
-    if params[:mother_id]
-      parent = Parent.find_by(:mother_id => params[:mother_id])
-      parent.update(:father_id => self.id)
-    else
-      parent = Parent.create(:mother_id => self.id)
-    end
-  end
+  # def generate_father_id
+  #   if params[:mother_id]
+  #     parent = Parent.find_by(:mother_id => params[:mother_id])
+  #     parent.update(:father_id => self.id)
+  #   else
+  #     parent = Parent.create(:mother_id => self.id)
+  #   end
+  # end
 
   def self.from_omniauth(auth)
      # Case 1: Find existing user by facebook uid
@@ -67,9 +67,4 @@ class User < ActiveRecord::Base
    def generate_ios_token
      self.ios_token = Devise.friendly_token
    end
-
-   def connect_father
-
-   end
-
 end
