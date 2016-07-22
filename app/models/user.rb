@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   before_create :generate_ios_token
 
-  # after_create :generate_father_id
+  after_create :generate_father_id
 
   # 註冊後檢查是否有mother_id
   def generate_father_id
