@@ -19,7 +19,9 @@ class User < ActiveRecord::Base
 
   before_create :generate_ios_token
 
-  # after_create :generate_father_id
+  before_create :generate_token
+
+  before_create :generate_father_id
 
   # 註冊後檢查是否有mother_id
   def generate_father_id
@@ -27,7 +29,7 @@ class User < ActiveRecord::Base
       parent = Parent.find_by(:mother_id => params[:mother_id])
       parent.update(:father_id => self.id)
     else
-      paraent = Parent.create(:mother_id => self.id)
+      parent = Parent.create(:mother_id => self.id)
     end
   end
 
@@ -64,6 +66,10 @@ class User < ActiveRecord::Base
 
    def generate_ios_token
      self.ios_token = Devise.friendly_token
+   end
+
+   def generate_token
+     parent.token = Devise.friendly_token
    end
 
    def connect_father
