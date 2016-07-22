@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :accounts
   resources :moods
   resources :psychos
   resources :parents

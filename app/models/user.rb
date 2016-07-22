@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :father_moods, :class_name => "Mood", :foreign_key => "father_id"
   has_many :mother_psychos, :class_name => "Psycho", :foreign_key => "mother_id"
   has_many :father_psychos, :class_name => "Psycho", :foreign_key => "father_id"
+  
   has_one :mother_parent, :class_name => "Parent", :foreign_key => "mother_id"
   has_one :father_parent, :class_name => "Parent", :foreign_key => "father_id"
 
@@ -19,7 +20,6 @@ class User < ActiveRecord::Base
 
   before_create :generate_ios_token
 
-  before_create :generate_token
 
   before_create :generate_father_id
 
@@ -66,10 +66,6 @@ class User < ActiveRecord::Base
 
    def generate_ios_token
      self.ios_token = Devise.friendly_token
-   end
-
-   def generate_token
-     parent.token = Devise.friendly_token
    end
 
    def connect_father
