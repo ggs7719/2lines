@@ -8,11 +8,12 @@ class ApiV1::AuthController < ApiController
 
     if params[:email] && params[:password]
 
-      user = User.new(:email => params[:email], :password => params[:password])
+      user = User.new(:email => params[:email], :password => params[:password], :sexuality => "f")
       if user.save
         render :json => { :message => "Ok",
                         :ios_token => user.ios_token,
-                        :user_id => user.id}
+                        :user_id => user.id,
+                        :sexuality => user.sexuality}
       else
         render :json => { :message => "Email or Password is wrong" }, :status => 401
       end
@@ -63,17 +64,6 @@ class ApiV1::AuthController < ApiController
       render :json => { :message => "Ok"}
     else
       render :json => { :message => "fail"}
-    end
-  end
-
-  def connect_father
-
-    email = params[:email]
-    comment = params[:comment]
-    if UserMailer.notify_comment(email, current_user, comment).deliver_now!
-      render :json => { :message => "Successfully delivered"}
-    else
-      render :json => { :message => "fail" }
     end
   end
 

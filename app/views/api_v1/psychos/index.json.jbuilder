@@ -1,6 +1,3 @@
-json.TotalCount do
-  json.total Psycho.count
-end
 
 json.data @psychos do |psycho|
 

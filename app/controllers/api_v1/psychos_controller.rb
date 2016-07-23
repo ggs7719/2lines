@@ -3,11 +3,12 @@ class ApiV1::PsychosController < ApiController
   before_action :authenticate_user!
 
   def index
-    @psychos = Psycho.all
+    @psychos = Psycho.where( :mother => current_user )
   end
 
   def create
     @psycho = Psycho.new( psycho_params )
+    @psycho.mother = current_user
 
     if @psycho.save
       render :json => { :message => "Successfully created"}
@@ -16,15 +17,15 @@ class ApiV1::PsychosController < ApiController
     end
   end
 
-  def update
-    @psycho = Psycho.find( params[:id])
+  # def update
+  #   @psycho = Psycho.find( params[:id])
 
-    if @psycho.update( psycho_params )
-      render :json => { :message => "Successfully updated"}
-    else
-      render :json => { :message => "Validate failed" }, :status => 400
-    end
-  end
+  #   if @psycho.update( psycho_params )
+  #     render :json => { :message => "Successfully updated"}
+  #   else
+  #     render :json => { :message => "Validate failed" }, :status => 400
+  #   end
+  # end
 
   def psycho_params
     params.permit(:title, :content, :message)

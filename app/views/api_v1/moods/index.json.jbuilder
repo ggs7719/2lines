@@ -1,6 +1,3 @@
-json.TotalCount do
-  json.total Mood.count
-end
 
 json.data @moods do |mood|
 

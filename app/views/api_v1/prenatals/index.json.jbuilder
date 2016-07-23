@@ -1,6 +1,3 @@
-json.TotalCount do
-  json.total Prenatal.count
-end
 
 json.data @prenatals do |prenatal|
 

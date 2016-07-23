@@ -3,11 +3,12 @@ class ApiV1::PrenatalsController < ApiController
   before_action :authenticate_user!
 
   def index
-    @prenatals = Prenatal.all
+    @prenatals = Prenatal.where( :mother => current_user )
   end
 
   def create
     @prenatal = Prenatal.new( prenatal_params )
+    @prenatal.mother = current_user
 
     if @prenatal.save
       render :json => { :message => "Successfully created"}

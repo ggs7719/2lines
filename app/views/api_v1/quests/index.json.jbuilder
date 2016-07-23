@@ -1,6 +1,3 @@
-json.TotalCount do
-  json.total Quest.count
-end
 
 json.data @quests do |quest|
 
