@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
     resources :parents
+    get "/parents/info/:type" => "parents#info"
 
     resources :quests, only: [:index, :create]
     post "/quests/:id/status" => "quests#send_read", :as => 'quests_send_read'
@@ -37,9 +38,11 @@ Rails.application.routes.draw do
     post "/logout" => "auth#logout"
     post "/signup" => "auth#signup"
     #connect_father
-    post "/connect_father" => "auth#connect_father"
-
+    post "/connect_father" => "parents#connect_father"
   end
+    #connect_father
+    get "/:id" => "auth_father#new"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
