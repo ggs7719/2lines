@@ -10,6 +10,9 @@ class ApiV1::PsychosController < ApiController
     @psycho = Psycho.new( psycho_params )
     @psycho.mother = current_user
 
+    f = Parent.find_by(:mother => current_user)
+    @psycho.father = f.father
+
     if @psycho.save
       render :json => { :message => "Successfully created"}
     else

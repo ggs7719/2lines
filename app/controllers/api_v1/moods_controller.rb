@@ -10,6 +10,8 @@ class ApiV1::MoodsController < ApiController
     @mood = Mood.new( mood_params )
     @mood.mother = current_user
 
+    f = Parent.find_by(:mother => current_user)
+    @mood.father = f.father
 
     if @mood.save
       render :json => { :message => "Successfully created"}
