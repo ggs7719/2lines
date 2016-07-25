@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
   def notify_father(parent)
     @comment = parent.comment
     @email = parent.email
-    @url = "http://139.162.7.161/users/sign_up"
+    @url = "http://139.162.7.161/connect_father/#{parent.token}"
 
     # new_accept_users_url( :token => @token )
 

@@ -4,21 +4,18 @@ class ApiV1::ParentsController < ApiController
 
   def connect_father
 
-    email = params[:email]
-    comment = params[:comment]
 
-    token = Devise.friendly_token[0,5]
-    Parent.create( :mother => current_user, :token => token,
-                  :email => email )
-    #parent = current_user.connect_father(params[:email], params[:comment])
-    #UserMailer.notify_father(p
+    parent = current_user.build_mother_parent( :email => params[:email], :comment => params[:comment], :mother => current_user)
+    parent.save
 
-    if UserMailer.notify_comment(email, current_user, comment).deliver_now!
+    if UserMailer.notify_father(parent).deliver_now!
       render :json => { :message => "Successfully delivered"}
     else
       render :json => { :message => "fail" }
     end
+
   end
+
 
   def info
     @father = current_user
