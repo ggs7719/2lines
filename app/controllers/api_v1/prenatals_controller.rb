@@ -10,6 +10,9 @@ class ApiV1::PrenatalsController < ApiController
     @prenatal = Prenatal.new( prenatal_params )
     @prenatal.mother = current_user
 
+    f = Parent.find_by(:mother => current_user)
+    @prenatal.father = f.father
+
     if @prenatal.save
       render :json => { :message => "Successfully created"}
     else

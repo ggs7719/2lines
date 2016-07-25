@@ -10,6 +10,9 @@ class ApiV1::QuestsController < ApiController
     @quest = Quest.new( quest_params )
     @quest.mother = current_user
 
+    f = Parent.find_by(:mother => current_user)
+    @quest.father = f.father
+
     if @quest.save
       render :json => { :message => "Successfully created"}
     else

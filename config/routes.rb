@@ -39,9 +39,11 @@ Rails.application.routes.draw do
     post "/signup" => "auth#signup"
     #connect_father
     post "/connect_father" => "parents#connect_father"
+    post "/connect_father" => "auth#connect_father"
   end
     #connect_father
-    get "/:id" => "auth_father#new"
+    get "/connect_father/:id" => "auth_father#new"
+    post "/connect_father/:id" => "auth_father#signup" , :as => 'connect_father_signup'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
