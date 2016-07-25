@@ -7,16 +7,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">2 Lines Web Version</a>
+      <a class="navbar-brand" href="#">Two Lines Web Ver.</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <%= link_to('串聯爸爸', connect_father_welcome_index_path, :class => "btn btn-primary") %>
+      <% end %>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><%= link_to '個人資料', edit_user_registration_path %></li>
+              <li><%= link_to('修改密碼', edit_registration_path(:user)) %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to '登出', destroy_user_session_path, method: :delete, data: {confirm: "確認登出?!"} %></li>
             </ul>
