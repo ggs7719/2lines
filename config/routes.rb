@@ -39,7 +39,6 @@ Rails.application.routes.draw do
     post "/signup" => "auth#signup"
     #connect_father
     post "/connect_father" => "parents#connect_father"
-    post "/connect_father" => "auth#connect_father"
   end
     #connect_father
     get "/connect_father/:id" => "auth_father#new"
