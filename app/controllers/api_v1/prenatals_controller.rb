@@ -30,6 +30,18 @@ class ApiV1::PrenatalsController < ApiController
     end
   end
 
+  def send_read
+    prenatal = Prenatal.find( params[:id] )
+    prenatal.status = true
+
+    if prenatal.save
+      render :json => { :message => "Already readed",
+                        :read_status => true }
+    else
+      render :json => { :message => "Failed" }, :status => 400
+    end
+  end
+
   def prenatal_params
     params.permit(:title, :content, :message)
   end

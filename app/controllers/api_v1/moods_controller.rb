@@ -20,6 +20,18 @@ class ApiV1::MoodsController < ApiController
     end
   end
 
+  def send_read
+    mood = Mood.find( params[:id] )
+    mood.status = true
+
+    if mood.save
+      render :json => { :message => "Already readed",
+                        :read_status => true }
+    else
+      render :json => { :message => "Failed" }, :status => 400
+    end
+  end
+
   # def update
   #   @mood = Mood.find( params[:id])
 

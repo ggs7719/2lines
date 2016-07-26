@@ -9,4 +9,7 @@ json.data @datas do |data|
   json.message data.message
   json.date data.date
   json.read_status data.status
+  json.done data.done
+
 end
+

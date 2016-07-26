@@ -25,10 +25,10 @@ Rails.application.routes.draw do
     post "/quests/:id/done" => "quests#send_done", :as => 'quests_send_done'
 
     resources :moods, only: [:index, :create]
-    post "/moods/:id/status" => "orders#mood_read", :as => 'moods_send_read'
+    post "/moods/:id/status" => "moods#send_read", :as => 'moods_send_read'
 
     resources :psychos, only: [:index, :create]
-    post "/psychos/:id/status" => "orders#psycho_read", :as => 'psychos_send_read'
+    post "/psychos/:id/status" => "psychos#send_read", :as => 'psychos_send_read'
 
     resources :prenatals, only: [:index, :create, :update]
     post "/prenatals/:id/status" => "prenatals#send_read", :as => 'prenatals_send_read'

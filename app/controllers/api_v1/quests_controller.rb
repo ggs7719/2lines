@@ -6,7 +6,7 @@ class ApiV1::QuestsController < ApiController
     @quests = Quest.where( :mother => current_user )
   end
 
-    def create
+  def create
     @quest = Quest.new( quest_params )
     @quest.mother = current_user
 
@@ -29,6 +29,31 @@ class ApiV1::QuestsController < ApiController
   #     render :json => { :message => "Validate failed" }, :status => 400
   #   end
   # end
+
+
+  def send_read
+    quest = Quest.find( params[:id] )
+    quest.status = true
+
+    if quest.save
+      render :json => { :message => "Already readed",
+                        :read_status => true }
+    else
+      render :json => { :message => "Failed" }, :status => 400
+    end
+  end
+
+  def send_done
+    quest = Quest.find( params[:id] )
+    quest.done = true
+
+    if quest.save
+      render :json => { :message => "Already done",
+                        :done => true }
+    else
+      render :json => { :message => "Failed" }
+    end
+  end
 
   def quest_params
     params.permit(:title, :content, :message)

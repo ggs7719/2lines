@@ -20,6 +20,18 @@ class ApiV1::PsychosController < ApiController
     end
   end
 
+  def send_read
+    psycho = Psycho.find( params[:id] )
+    psycho.status = true
+
+    if psycho.save
+      render :json => { :message => "Already readed",
+                        :read_status => true }
+    else
+      render :json => { :message => "Failed" }, :status => 400
+    end
+  end
+
   # def update
   #   @psycho = Psycho.find( params[:id])
 
