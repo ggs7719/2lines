@@ -23,15 +23,19 @@ Rails.application.routes.draw do
     resources :quests, only: [:index, :create, :destroy]
     post "/quests/:id/status" => "quests#send_read", :as => 'quests_send_read'
     post "/quests/:id/done" => "quests#send_done", :as => 'quests_send_done'
+    post "/quests/:days/days/ago" => "quests#days_ago"
 
     resources :moods, only: [:index, :create, :destroy]
     post "/moods/:id/status" => "moods#send_read", :as => 'moods_send_read'
+    post "/moods/:days/days/ago" => "moods#days_ago"
 
     resources :psychos, only: [:index, :create, :destroy]
     post "/psychos/:id/status" => "psychos#send_read", :as => 'psychos_send_read'
+    post "/psychos/:days/days/ago" => "psychos#days_ago"
 
     resources :prenatals, only: [:index, :create, :update, :destroy]
     post "/prenatals/:id/status" => "prenatals#send_read", :as => 'prenatals_send_read'
+    post "/prenatals/:days/days/ago" => "prenatals#days_ago"
 
     #log in/log out/ sign up
     post "/login" => "auth#login"

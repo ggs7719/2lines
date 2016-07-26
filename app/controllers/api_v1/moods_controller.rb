@@ -32,6 +32,11 @@ class ApiV1::MoodsController < ApiController
     end
   end
 
+  def days_ago
+    a = params[:days]
+    @quests = Quest.where(:mother=> current_user ).where("created_at > ?", a.to_f.days.ago)
+  end
+
   def send_read
     mood = Mood.find( params[:id] )
     mood.status = true
