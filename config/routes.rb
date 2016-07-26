@@ -20,17 +20,17 @@ Rails.application.routes.draw do
     resources :parents
     get "/parents/info/:type" => "parents#info"
 
-    resources :quests, only: [:index, :create]
+    resources :quests, only: [:index, :create, :destroy]
     post "/quests/:id/status" => "quests#send_read", :as => 'quests_send_read'
     post "/quests/:id/done" => "quests#send_done", :as => 'quests_send_done'
 
-    resources :moods, only: [:index, :create]
+    resources :moods, only: [:index, :create, :destroy]
     post "/moods/:id/status" => "moods#send_read", :as => 'moods_send_read'
 
-    resources :psychos, only: [:index, :create]
+    resources :psychos, only: [:index, :create, :destroy]
     post "/psychos/:id/status" => "psychos#send_read", :as => 'psychos_send_read'
 
-    resources :prenatals, only: [:index, :create, :update]
+    resources :prenatals, only: [:index, :create, :update, :destroy]
     post "/prenatals/:id/status" => "prenatals#send_read", :as => 'prenatals_send_read'
 
     #log in/log out/ sign up

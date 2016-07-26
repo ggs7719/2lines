@@ -30,6 +30,18 @@ class ApiV1::PrenatalsController < ApiController
     end
   end
 
+  def destroy
+    prenatal = Prenatal.find( params[:id] )
+    prenatal.remove = true
+
+    if prenatal.save
+      render :json => { :message => "Successfully deleted",
+                        :delete => true }
+    else
+      render :json => { :message => "Failed" }, :status => 400
+    end
+  end
+
   def send_read
     prenatal = Prenatal.find( params[:id] )
     prenatal.status = true

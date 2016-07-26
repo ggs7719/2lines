@@ -10,6 +10,6 @@ json.data @datas do |data|
   json.date data.date
   json.read_status data.status
   json.done data.done
-
+  json.delete data.remove
 end
 

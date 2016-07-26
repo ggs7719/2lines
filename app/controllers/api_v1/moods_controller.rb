@@ -20,6 +20,18 @@ class ApiV1::MoodsController < ApiController
     end
   end
 
+  def destroy
+    mood = Mood.find( params[:id] )
+    mood.remove = true
+
+    if mood.save
+      render :json => { :message => "Successfully deleted",
+                        :delete => true }
+    else
+      render :json => { :message => "Failed" }, :status => 400
+    end
+  end
+
   def send_read
     mood = Mood.find( params[:id] )
     mood.status = true

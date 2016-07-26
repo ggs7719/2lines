@@ -20,6 +20,18 @@ class ApiV1::QuestsController < ApiController
     end
   end
 
+  def destroy
+    quest = Quest.find( params[:id] )
+    quest.remove = true
+
+    if quest.save
+      render :json => { :message => "Successfully deleted",
+                        :delete => true }
+    else
+      render :json => { :message => "Failed" }, :status => 400
+    end
+  end
+
   # def update
   #   @quest = Quest.find( params[:id])
 

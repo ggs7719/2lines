@@ -9,4 +9,5 @@ json.data @quests do |quest|
   json.date quest.date
   json.read_status quest.status
   json.done quest.done
+  json.delete quest.remove
 end

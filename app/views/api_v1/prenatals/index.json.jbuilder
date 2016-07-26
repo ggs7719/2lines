@@ -8,4 +8,5 @@ json.data @prenatals do |prenatal|
   json.message prenatal.message
   json.date prenatal.date
   json.read_status prenatal.status
+  json.delete prenatal.remove
 end

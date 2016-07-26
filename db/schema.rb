@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726030526) do
+ActiveRecord::Schema.define(version: 20160726040040) do
 
   create_table "moods", force: :cascade do |t|
     t.datetime "created_at",                 null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160726030526) do
     t.integer  "count",      default: 0
     t.string   "message"
     t.boolean  "done",       default: false
+    t.boolean  "remove",     default: false
   end
 
   create_table "parents", force: :cascade do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160726030526) do
     t.integer  "count",      default: 0
     t.string   "message"
     t.boolean  "done"
+    t.boolean  "remove",     default: false
   end
 
   create_table "psychos", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160726030526) do
     t.integer  "count",      default: 0
     t.string   "message"
     t.boolean  "done",       default: false
+    t.boolean  "remove",     default: false
   end
 
   create_table "quests", force: :cascade do |t|
@@ -80,6 +83,7 @@ ActiveRecord::Schema.define(version: 20160726030526) do
     t.boolean  "done",       default: false
     t.integer  "count",      default: 0
     t.string   "message"
+    t.boolean  "remove",     default: false
   end
 
   create_table "users", force: :cascade do |t|

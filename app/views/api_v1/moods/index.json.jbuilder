@@ -8,4 +8,5 @@ json.data @moods do |mood|
   json.message mood.message
   json.date mood.date
   json.read_status mood.status
+  json.delete mood.remove
 end

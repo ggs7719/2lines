@@ -8,4 +8,5 @@ json.data @psychos do |psycho|
   json.message psycho.message
   json.date psycho.date
   json.read_status psycho.status
+  json.delete psycho.remove
 end

@@ -20,6 +20,18 @@ class ApiV1::PsychosController < ApiController
     end
   end
 
+  def destroy
+    psycho = Psycho.find( params[:id] )
+    psycho.remove = true
+
+    if psycho.save
+      render :json => { :message => "Successfully deleted",
+                        :delete => true }
+    else
+      render :json => { :message => "Failed" }, :status => 400
+    end
+  end
+
   def send_read
     psycho = Psycho.find( params[:id] )
     psycho.status = true
