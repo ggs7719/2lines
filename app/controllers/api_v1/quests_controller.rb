@@ -72,6 +72,6 @@ class ApiV1::QuestsController < ApiController
   end
 
   def quest_params
-    params.permit(:title, :content, :message)
+    params.permit(:title, :content, :message, :pic)
   end
 end

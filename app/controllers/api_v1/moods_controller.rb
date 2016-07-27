@@ -60,6 +60,6 @@ class ApiV1::MoodsController < ApiController
   # end
 
   def mood_params
-    params.permit(:title, :content, :message)
+    params.permit(:title, :content, :message, :pic)
   end
 end

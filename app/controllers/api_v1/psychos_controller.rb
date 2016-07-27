@@ -60,6 +60,6 @@ class ApiV1::PsychosController < ApiController
   # end
 
   def psycho_params
-    params.permit(:title, :content, :message)
+    params.permit(:title, :content, :message, :pic)
   end
 end

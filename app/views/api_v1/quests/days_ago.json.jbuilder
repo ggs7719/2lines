@@ -10,4 +10,5 @@ json.data @quests do |quest|
   json.read_status quest.status
   json.done quest.done
   json.delete quest.remove
+  json.pic    quest.pic
 end
