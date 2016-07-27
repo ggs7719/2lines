@@ -34,7 +34,7 @@ class ApiV1::MoodsController < ApiController
 
   def days_ago
     a = params[:days]
-    @quests = Quest.where(:mother=> current_user ).where("created_at > ?", a.to_f.days.ago)
+    @moods = mood.where(:mother=> current_user ).where("created_at > ?", a.to_f.days.ago)
   end
 
   def send_read
