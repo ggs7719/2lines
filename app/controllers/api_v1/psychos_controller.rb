@@ -54,15 +54,15 @@ class ApiV1::PsychosController < ApiController
     end
   end
 
-  # def update
-  #   @psycho = Psycho.find( params[:id])
+  def update
+    @psycho = Psycho.find( params[:id])
 
-  #   if @psycho.update( psycho_params )
-  #     render :json => { :message => "Successfully updated"}
-  #   else
-  #     render :json => { :message => "Validate failed" }, :status => 400
-  #   end
-  # end
+    if @psycho.update( psycho_params )
+      render :json => { :message => "Successfully updated"}
+    else
+      render :json => { :message => "Validate failed" }, :status => 400
+    end
+  end
 
   def psycho_params
     params.permit(:title, :content, :message, :pic)

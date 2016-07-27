@@ -54,15 +54,15 @@ class ApiV1::MoodsController < ApiController
     end
   end
 
-  # def update
-  #   @mood = Mood.find( params[:id])
+  def update
+    @mood = Mood.find( params[:id])
 
-  #   if @mood.update( mood_params )
-  #     render :json => { :message => "Successfully updated"}
-  #   else
-  #     render :json => { :message => "Validate failed" }, :status => 400
-  #   end
-  # end
+    if @mood.update( mood_params )
+      render :json => { :message => "Successfully updated"}
+    else
+      render :json => { :message => "Validate failed" }, :status => 400
+    end
+  end
 
   def mood_params
     params.permit(:title, :content, :message, :pic)

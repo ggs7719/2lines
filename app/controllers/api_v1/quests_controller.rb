@@ -32,15 +32,15 @@ class ApiV1::QuestsController < ApiController
     end
   end
 
-  # def update
-  #   @quest = Quest.find( params[:id])
+  def update
+    @quest = Quest.find( params[:id])
 
-  #   if @quest.update( quest_params )
-  #     render :json => { :message => "Successfully updated"}
-  #   else
-  #     render :json => { :message => "Validate failed" }, :status => 400
-  #   end
-  # end
+    if @quest.update( quest_params )
+      render :json => { :message => "Successfully updated"}
+    else
+      render :json => { :message => "Validate failed" }, :status => 400
+    end
+  end
 
   def days_ago
     a = params[:days]
