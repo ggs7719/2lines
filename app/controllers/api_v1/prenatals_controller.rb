@@ -47,6 +47,11 @@ class ApiV1::PrenatalsController < ApiController
     @prenatals = Prenatal.where(:mother=> current_user ).where("created_at > ?", a.to_f.days.ago)
   end
 
+  def sec_ago
+    b = params[:sec]
+    @prenatals = Prenatal.where(:mother=> current_user ).where("created_at > ?", b.to_f.seconds.ago)
+  end
+
   def send_read
     prenatal = Prenatal.find( params[:id] )
     prenatal.status = true

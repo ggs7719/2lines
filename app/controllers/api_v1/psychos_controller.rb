@@ -37,6 +37,11 @@ class ApiV1::PsychosController < ApiController
     @psychos = Psycho.where(:mother=> current_user ).where("created_at > ?", a.to_f.days.ago)
   end
 
+  def sec_ago
+    b = params[:sec]
+    @psychos = Psycho.where(:mother=> current_user ).where("created_at > ?", b.to_f.seconds.ago)
+  end
+
   def send_read
     psycho = Psycho.find( params[:id] )
     psycho.status = true

@@ -47,6 +47,11 @@ class ApiV1::QuestsController < ApiController
     @quests = Quest.where(:mother=> current_user ).where("created_at > ?", a.to_f.days.ago)
   end
 
+  def sec_ago
+    b = params[:sec]
+    @quests = Quest.where(:mother=> current_user ).where("created_at > ?", b.to_f.seconds.ago)
+  end
+
   def send_read
     quest = Quest.find( params[:id] )
     quest.status = true

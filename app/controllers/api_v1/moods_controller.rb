@@ -37,6 +37,11 @@ class ApiV1::MoodsController < ApiController
     @moods = Mood.where(:mother=> current_user ).where("created_at > ?", a.to_f.days.ago)
   end
 
+  def sec_ago
+    b = params[:sec]
+    @moods = Mood.where(:mother=> current_user ).where("created_at > ?", b.to_f.seconds.ago)
+  end
+
   def send_read
     mood = Mood.find( params[:id] )
     mood.status = true
